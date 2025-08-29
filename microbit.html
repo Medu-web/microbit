@@ -4,258 +4,424 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>micro:bit 導入のご提案</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
+            font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .icon {
-            width: 3rem;
-            height: 3rem;
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
         }
-        .icon-container {
-            background-color: #e0e7ff;
-            border-radius: 50%;
+        h2 {
+            color: #5856d6;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #5856d6;
+            padding-bottom: 10px;
         }
-        .link-card {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            transition: transform 0.2s;
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
         }
-        .link-card:hover {
+        .microbit-intro {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        .microbit-img {
+            max-width: 45%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 10px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
             transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .skill-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #5856d6;
+        }
+        .skill-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background: #5856d6;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .total-row {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .example-card {
+            background: white;
+            border: 2px solid #5856d6;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .grade-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .shop-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .shop-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .shop-card h3 {
+            color: #5856d6;
+            margin-bottom: 15px;
+        }
+        .shop-card ul {
+            list-style: none;
+        }
+        .shop-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .shop-card a {
+            color: #5856d6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .shop-card a:hover {
+            text-decoration: underline;
+        }
+        .shop-card small {
+            display: block;
+            color: #777;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .footer strong {
+            color: #e91e63;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .microbit-img {
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .features, .skills, .examples {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="p-4 md:p-8 lg:p-12">
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="card">
+            <h1>🎓 micro:bit 導入のご提案</h1>
+            <p class="subtitle">小学校のプログラミング教育に最適な教育ツール</p>
+        </div>
 
-    <div class="max-w-4xl mx-auto space-y-8">
-
-        <!-- Header Section -->
-        <header class="text-center p-6 bg-white card">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">micro:bit 導入のご提案</h1>
-            <p class="text-lg md:text-xl text-gray-600">小学校のプログラミング教育に最適なツール</p>
-        </header>
-
-        <!-- What is micro:bit Section -->
-        <section class="card p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">micro:bitとは？</h2>
-            <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-8 mb-6">
-                <!-- micro:bit Front Image -->
-                <img src="microbit1.webp" alt="micro:bit前面" class="w-full md:w-1/2 max-w-sm rounded-lg shadow-md">
-                <!-- micro:bit Back Image -->
-                <img src="microbit2.webp" alt="micro:bit背面" class="w-full md:w-1/2 max-w-sm rounded-lg shadow-md">
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                
-                <!-- Card 1 -->
-                <div class="p-4 card border border-indigo-200">
-                    <div class="flex items-center justify-center icon-container mx-auto mb-4">
-                        <span class="text-3xl text-indigo-600">💡</span>
-                    </div>
-                    <h3 class="font-semibold text-gray-700">直感的なプログラミング</h3>
-                    <p class="text-sm text-gray-500 mt-2">ブロックを組み合わせるだけで、文字入力が苦手でもOK！</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="p-4 card border border-indigo-200">
-                    <div class="flex items-center justify-center icon-container mx-auto mb-4">
-                        <span class="text-3xl text-indigo-600">🚀</span>
-                    </div>
-                    <h3 class="font-semibold text-gray-700">モノづくりへの応用</h3>
-                    <p class="text-sm text-gray-500 mt-2">センサーやLEDなど、機能が満載。アイデアを形にできます。</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="p-4 card border border-indigo-200">
-                    <div class="flex items-center justify-center icon-container mx-auto mb-4">
-                        <span class="text-3xl text-indigo-600">🔌</span>
-                    </div>
-                    <h3 class="font-semibold text-gray-700">優れた拡張性</h3>
-                    <p class="text-sm text-gray-500 mt-2">様々な機器と接続可能で、学びがどんどん広がります。</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="p-4 card border border-indigo-200">
-                    <div class="flex items-center justify-center icon-container mx-auto mb-4">
-                        <span class="text-3xl text-indigo-600">💰</span>
-                    </div>
-                    <h3 class="font-semibold text-gray-700">低コストでの導入</h3>
-                    <p class="text-sm text-gray-500 mt-2">安価な本体で、効率的な教育を実現します。</p>
+        <!-- micro:bitとは -->
+        <div class="card">
+            <h2>micro:bitとは？</h2>
+            <div class="microbit-intro">
+                <!-- Image 1 -->
+                <img src="microbit1.webp" alt="micro:bit 基板" class="microbit-img">
+                <!-- Image 2 -->
+                <img src="microbit2.webp" alt="micro:bit プログラミング" class="microbit-img">
+                <div style="flex-basis: 100%; max-width: 800px; margin-top: 20px; text-align: center;">
+                    <p>micro:bit（マイクロビット）は、イギリスBBCが開発した教育用マイコンボードです。</p>
+                    <p>手のひらサイズの小さな基板に、LED、ボタン、温度センサー、加速度センサー、電子コンパス、無線通信機能など、様々な機能を搭載しています。</p>
+                    <p>プログラミング初心者でも直感的に操作できるビジュアルプログラミング言語（MakeCodeなど）に対応しており、**「モノづくり」**を通じて楽しくプログラミングを学ぶことができます。</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- 3 Pillars of Learning Section -->
-        <section class="card p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">micro:bitで育まれる3つの力</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                
-                <!-- Pillar 1 -->
-                <div class="flex flex-col items-center p-4">
-                    <span class="text-5xl mb-2">🤖</span>
-                    <h3 class="text-xl font-bold text-gray-700">論理的思考力</h3>
-                    <p class="text-gray-500 mt-2">プログラムを組み立てることで、物事を順序立てて考える力が身につきます。</p>
+        <!-- micro:bitでできること -->
+        <div class="card">
+            <h2>micro:bitでできること</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>光る！</h3>
+                    <p>25個のLEDを自由にプログラミングして、文字や図形を表示したり、アニメーションを作ったりできます。</p>
                 </div>
-
-                <!-- Pillar 2 -->
-                <div class="flex flex-col items-center p-4">
-                    <span class="text-5xl mb-2">✨</span>
-                    <h3 class="text-xl font-bold text-gray-700">創造性</h3>
-                    <p class="text-gray-500 mt-2">自分のアイデアを形にすることで、自由な発想や表現力が育まれます。</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>音が出る！</h3>
+                    <p>スピーカーやヘッドホンを接続して、音を鳴らしたり、簡単なメロディを演奏したりできます。</p>
                 </div>
-
-                <!-- Pillar 3 -->
-                <div class="flex flex-col items-center p-4">
-                    <span class="text-5xl mb-2">🔧</span>
-                    <h3 class="text-xl font-bold text-gray-700">問題解決能力</h3>
-                    <p class="text-sm text-gray-500 mt-2">予想通りに動かない時、原因を探して修正する力が養われます。</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>ゲームを作る！</h3>
+                    <p>加速度センサーやボタンを使って、簡単なゲーム（じゃんけん、万歩計など）を制作できます。</p>
                 </div>
-
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="card p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">最適な導入プラン（30台セット）</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left whitespace-nowrap">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="py-3 px-4 font-semibold text-gray-700">品目</th>
-                            <th class="py-3 px-4 font-semibold text-gray-700 text-center">数量</th>
-                            <th class="py-3 px-4 font-semibold text-gray-700 text-right">単価</th>
-                            <th class="py-3 px-4 font-semibold text-gray-700 text-right">金額</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-3 px-4 text-gray-600">micro:bit V2 本体</td>
-                            <td class="py-3 px-4 text-gray-600 text-center">30個</td>
-                            <td class="py-3 px-4 text-gray-600 text-right">2,750円</td>
-                            <td class="py-3 px-4 font-bold text-right">82,500円</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 text-gray-600">micro:bit用 電池ケース</td>
-                            <td class="py-3 px-4 text-gray-600 text-center">30個</td>
-                            <td class="py-3 px-4 text-gray-600 text-right">250円</td>
-                            <td class="py-3 px-4 font-bold text-right">7,500円</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 text-gray-600">micro:bit用 USBケーブル</td>
-                            <td class="py-3 px-4 text-gray-600 text-center">30個</td>
-                            <td class="py-3 px-4 text-gray-600 text-right">300円</td>
-                            <td class="py-3 px-4 font-bold text-right">9,000円</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 text-gray-600">micro:bit用 保護ケース</td>
-                            <td class="py-3 px-4 text-gray-600 text-center">30個</td>
-                            <td class="py-3 px-4 text-gray-600 text-right">400円</td>
-                            <td class="py-3 px-4 font-bold text-right">12,000円</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 text-gray-600">単4アルカリ乾電池</td>
-                            <td class="py-3 px-4 text-gray-600 text-center">60本</td>
-                            <td class="py-3 px-4 text-gray-600 text-right">100円</td>
-                            <td class="py-3 px-4 font-bold text-right">6,000円</td>
-                        </tr>
-                        <tr class="bg-gray-100 font-bold">
-                            <td class="py-3 px-4">合計</td>
-                            <td class="py-3 px-4 text-center"></td>
-                            <td class="py-3 px-4 text-right"></td>
-                            <td class="py-3 px-4 text-right">117,000円</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="text-sm text-gray-500 mt-4 text-center">※上記は税込価格です。別途送料が発生します。</p>
-        </section>
-
-        <!-- Use Cases Section -->
-        <section class="card p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">授業での活用例</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                
-                <!-- Use Case 1 -->
-                <div class="p-4 card border border-green-200">
-                    <span class="text-3xl mb-2">🟢</span>
-                    <h3 class="text-xl font-bold text-gray-700">低学年</h3>
-                    <p class="text-sm text-gray-500 mt-2">
-                        **「おしゃべりロボット」**<br>
-                        ボタンを押すとLEDに文字が表示されるプログラム。
-                    </p>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>無線通信！</h3>
+                    <p>Bluetoothや無線（Radio）機能を使って、他のmicro:bitと通信し、協力プレイや情報交換ができます。</p>
                 </div>
-                
-                <!-- Use Case 2 -->
-                <div class="p-4 card border border-blue-200">
-                    <span class="text-3xl mb-2">🔵</span>
-                    <h3 class="text-xl font-bold text-gray-700">中学年</h3>
-                    <p class="text-sm text-gray-500 mt-2">
-                        **「傾きセンサーゲーム」**<br>
-                        micro:bitを傾けてキャラクターを動かすゲーム。
-                    </p>
+                <div class="feature-card">
+                    <div class="feature-icon">🌡️</div>
+                    <h3>センサー！</h3>
+                    <p>温度センサー、加速度センサー、電子コンパスを使って、様々な環境データを取得・活用できます。</p>
                 </div>
-                
-                <!-- Use Case 3 -->
-                <div class="p-4 card border border-purple-200">
-                    <span class="text-3xl mb-2">🟣</span>
-                    <h3 class="text-xl font-bold text-gray-700">高学年</h3>
-                    <p class="text-sm text-gray-500 mt-2">
-                        **「光センサーの温度計」**<br>
-                        部屋の明るさや温度を測定するプログラム。
-                    </p>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>ロボット制御！</h3>
+                    <p>サーボモーターやDCモーターを接続し、ロボットや電子工作を制御することができます。</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Purchase Information Section -->
-        <section class="card p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">購入先情報</h2>
-            <p class="text-sm text-gray-500 mb-4 text-center">
-                以下は、micro:bitを購入できる主要な販売店と、東京都公立小中学校向けの指定カタログ情報です。
-            </p>
+        <!-- micro:bitが育む資質・能力 -->
+        <div class="card">
+            <h2>micro:bitが育む資質・能力</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <div class="skill-icon">🧠</div>
+                    <h3>思考力・判断力・表現力</h3>
+                    <p>問題解決のために論理的に考え、試行錯誤しながら最適な解決策を見つけ出す力を養います。</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🤝</div>
+                    <h3>主体性・多様性・協働性</h3>
+                    <p>自ら課題を見つけ、多様な仲間と協力しながらプロジェクトを進める力を育みます。</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>プログラミング的思考</h3>
+                    <p>物事を順序立てて考え、効率的な処理方法を考案するプログラミング的思考を自然に身につけます。</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💡</div>
+                    <h3>創造力・探究心</h3>
+                    <p>アイデアを形にする楽しさを知り、新たな発想や表現方法を追求する探究心を刺激します。</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Retailers Section 1 -->
-                <div class="card p-4 bg-gray-50">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">主要な小売店</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><a href="https://akizukidenshi.com/catalog/g/g115882/" target="_blank" class="text-blue-600 hover:underline">秋月電子通商</a><br><span class="text-xs text-gray-500">（電子部品専門店）</span></li>
-                        <li><a href="https://www.switch-science.com/search?q=microbit" target="_blank" class="text-blue-600 hover:underline">スイッチサイエンス</a><br><span class="text-xs text-gray-500">（電子工作キット専門店）</span></li>
-                        <li><a href="https://store.iftiny.com/collections/gategory-microbit-basic-kits" target="_blank" class="text-blue-600 hover:underline">iftiny</a><br><span class="text-xs text-gray-500">（micro:bit専門オンラインストア）</span></li>
+        <!-- 導入による期待効果 -->
+        <div class="card">
+            <h2>導入による期待効果</h2>
+            <ul>
+                <li><strong>プログラミング教育の質の向上:</strong> 児童が主体的に学べる環境を提供し、より深く実践的な学習を促します。</li>
+                <li><strong>STEAM教育の推進:</strong> 科学、技術、工学、芸術、数学を横断的に学び、創造的な問題解決能力を育みます。</li>
+                <li><strong>教員の負担軽減:</strong> 直感的な操作で、プログラミング指導の経験が少ない先生でも安心して取り組めます。</li>
+                <li><strong>情報活用能力の育成:</strong> 情報社会で必要とされる情報収集、分析、発信の基礎能力を養います。</li>
+                <li><strong>未来社会を生き抜く力の育成:</strong> 変化の激しい現代社会で求められる、PBL（問題解決型学習）能力を強化します。</li>
+            </ul>
+        </div>
+
+        <!-- 想定される活用事例 -->
+        <div class="card">
+            <h2>想定される活用事例</h2>
+            <div class="examples">
+                <div class="example-card">
+                    <div class="grade-icon">🏫</div>
+                    <h3>小学3・4年生</h3>
+                    <p>光るメッセージボード、簡単なゲーム制作（じゃんけん、すごろく）、お天気表示</p>
+                </div>
+                <div class="example-card">
+                    <div class="grade-icon">🏫</div>
+                    <h3>小学5・6年生</h3>
+                    <p>センサーを使った環境モニタリング、無線通信によるロボット制御、オリジナル楽器制作</p>
+                </div>
+                <div class="example-card">
+                    <div class="grade-icon">🧪</div>
+                    <h3>理科</h3>
+                    <p>温度変化の記録、光センサーによる明るさ測定、電子コンパスで方角を学ぶ</p>
+                </div>
+                <div class="example-card">
+                    <div class="grade-icon">🎨</div>
+                    <h3>図画工作</h3>
+                    <p>LEDを使ったオブジェ制作、動きと音のあるインタラクティブアート</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 導入費用について -->
+        <div class="card">
+            <h2>導入費用について (例)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>単価 (税抜)</th>
+                        <th>数量</th>
+                        <th>合計 (税抜)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>micro:bit 本体 (V2.2)</td>
+                        <td>¥2,500</td>
+                        <td>30個</td>
+                        <td>¥75,000</td>
+                    </tr>
+                    <tr>
+                        <td>USBケーブル (データ通信対応)</td>
+                        <td>¥300</td>
+                        <td>30本</td>
+                        <td>¥9,000</td>
+                    </tr>
+                    <tr>
+                        <td>電池ボックス (単4 x 2)</td>
+                        <td>¥200</td>
+                        <td>30個</td>
+                        <td>¥6,000</td>
+                    </tr>
+                    <tr>
+                        <td>ワニ口クリップケーブル (5本セット)</td>
+                        <td>¥500</td>
+                        <td>10セット</td>
+                        <td>¥5,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">小計</td>
+                        <td>¥95,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">消費税 (10%)</td>
+                        <td>¥9,500</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">合計</td>
+                        <td><strong>¥104,500</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><small>※上記はあくまで目安です。数量やセット内容によって変動します。詳細は各販売店にお問い合わせください。</small></p>
+        </div>
+
+        <!-- 購入先のご案内 -->
+        <div class="card">
+            <h2>購入先のご案内</h2>
+            <div class="shop-section">
+                <div class="shop-card">
+                    <h3>💻 オンラインストア</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.switch-science.com/search?q=microbit" target="_blank">スイッチサイエンス</a>
+                            <br><small>電子工作キット専門店</small>
+                        </li>
+                        <li>
+                            <a href="https://store.iftiny.com/collections/gategory-microbit-basic-kits" target="_blank">iftiny</a>
+                            <br><small>micro:bit専門オンラインストア</small>
+                        </li>
+                        <li>
+                            <a href="https://amzn.asia/d/hEMrWIP" target="_blank">Amazon</a>
+                            <br><small>総合オンラインストア</small>
+                        </li>
                     </ul>
                 </div>
-                
-                <!-- Catalog Section -->
-                <div class="card p-4 bg-gray-50 col-span-2">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">東京都公立小中学校向けカタログ</h3>
-                    <p class="text-sm text-gray-600 mb-2">
-                        以下の教育用品カタログで取り扱いがあります。
-                    </p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><a href="#" class="text-blue-600 hover:underline">都公立学校用品供給協同組合（カタログ販売）</a><br><span class="text-xs text-gray-500">※詳細は各学校の備品購入担当者様にご確認ください。</span></li>
+                <div class="shop-card">
+                    <h3>🏫 教育用品カタログ</h3>
+                    <ul>
+                        <li>
+                            <a href="https://educe-web.craypas.co.jp/product/detail/28827" target="_blank">理科エデュース</a>
+                            <br><small>教育用品専門カタログ<br>※学校向け特別価格あり</small>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Footer Section -->
-        <footer class="text-center p-6 bg-white card">
-            <p class="text-gray-600">
-                micro:bitの導入は、児童がプログラミングを**「楽しい学び」**として捉え、未来社会で活躍するための**資質・能力**を育む最良の選択肢です。
-            </p>
-        </footer>
-
+        <!-- フッター -->
+        <div class="card">
+            <div class="footer">
+                <p>
+                    micro:bitの導入は、児童がプログラミングを<br>
+                    <strong>「楽しい学び」</strong>として捉え、<br>
+                    未来社会で活躍するための<strong>資質・能力</strong>を育む<br>
+                    最良の選択肢です。
+                </p>
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
