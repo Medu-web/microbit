@@ -249,9 +249,10 @@
             height: 100%;
             overflow: auto; /* 内容が多い場合にスクロール可能に */
             background-color: rgba(0,0,0,0.6); /* 半透明の背景 */
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* flexコンテナとして子要素を中央寄せ */
+            align-items: center; /* flexコンテナとして子要素を中央寄せ */
         }
+        /* .modal.is-open クラスは使用しません */
         .modal-content {
             background-color: #fefefe;
             margin: auto; /* 中央寄せ */
@@ -617,6 +618,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded: スクリプトが読み込まれました。');
             const featureCards = document.querySelectorAll('.feature-card');
             const modals = document.querySelectorAll('.modal');
             const closeButtons = document.querySelectorAll('.close-button');
@@ -624,10 +626,14 @@
             // カードがクリックされたときにモーダルを開く
             featureCards.forEach(card => {
                 card.addEventListener('click', (event) => {
+                    console.log('Feature card clicked:', card.dataset.modalTarget);
                     const targetModalId = card.dataset.modalTarget;
                     const targetModal = document.getElementById(targetModalId);
                     if (targetModal) {
-                        targetModal.style.display = 'flex'; // フレックスボックスで中央寄せ
+                        targetModal.style.display = 'flex'; // 直接displayプロパティを設定して表示
+                        console.log(`Modal ${targetModalId} opened.`);
+                    } else {
+                        console.error(`Target modal with ID ${targetModalId} not found.`);
                     }
                 });
             });
@@ -635,7 +641,11 @@
             // 閉じるボタンがクリックされたときにモーダルを閉じる
             closeButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    button.closest('.modal').style.display = 'none';
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none'; // 直接displayプロパティを設定して非表示
+                        console.log(`Modal ${modal.id} closed by button.`);
+                    }
                 });
             });
 
@@ -643,7 +653,8 @@
             modals.forEach(modal => {
                 modal.addEventListener('click', (event) => {
                     if (event.target === modal) { // モーダルの背景部分をクリックした場合
-                        modal.style.display = 'none';
+                        modal.style.display = 'none'; // 直接displayプロパティを設定して非表示
+                        console.log(`Modal ${modal.id} closed by outside click.`);
                     }
                 });
             });
